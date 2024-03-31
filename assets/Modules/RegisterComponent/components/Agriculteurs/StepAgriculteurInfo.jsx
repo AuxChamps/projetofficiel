@@ -9,7 +9,7 @@ function StepAgriculteurInfo({handleUserData, nextStep, previousStep}) {
                     <label htmlFor="agriculteur-name">Nom de l'entreprise</label>
                     <input type="text" className="form-control" id="agriculteur-name" name="agriculteur-name"
                            placeholder="Nom de l'exploitation"
-                           onChange={(e) => handleUserData({agriculteurName: e.target.value})}/>
+                           onChange={(e) => handleUserData({nameOfCompany: e.target.value})}/>
                 </div>
             </div>
             <div className="col-md-6">
@@ -17,14 +17,14 @@ function StepAgriculteurInfo({handleUserData, nextStep, previousStep}) {
                     <label htmlFor="agriculteur-siret">Numéro de SIRET</label>
                     <input type="text" className="form-control" id="agriculteur-siret" name="agriculteur-siret"
                            placeholder="Numéro de SIRET"
-                           onChange={(e) => handleUserData({agriculteurSiret: e.target.value})}/>
+                           onChange={(e) => handleUserData({siretNumber: e.target.value})}/>
                 </div>
             </div>
             <div className="col-md-6">
                 <div className="form-group">
                     <label htmlFor="agriculteur-ape">Adresse du siège</label>
                     <input type="text" className="form-control" id="agriculteur-ape" name="agriculteur-ape"
-                           placeholder="Code APE" onChange={(e) => handleUserData({agriculteurApe: e.target.value})}/>
+                           placeholder="Code APE" onChange={(e) => handleUserData({addressSiege: e.target.value})}/>
                 </div>
             </div>
 

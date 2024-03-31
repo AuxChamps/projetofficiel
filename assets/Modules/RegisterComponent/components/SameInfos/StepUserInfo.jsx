@@ -6,12 +6,12 @@ function StepUserInfo({handleUserData, nextStep, previousStep, userData}){
     const validateForm = () => {
         const newErrors = {};
 
-        if (!userData.nom) newErrors.nom = "Le nom est requis";
-        if (!userData.prenom) newErrors.prenom = "Le prénom est requis";
+        if (!userData.firstname) newErrors.nom = "Le nom est requis";
+        if (!userData.lastname) newErrors.prenom = "Le prénom est requis";
         if (!userData.email) newErrors.email = "L'email est requis";
-        if (!userData.telephone) newErrors.telephone = "Le téléphone est requis";
-        if (!userData.password || userData.password.length < 6) newErrors.password = "Mot de passe trop court (6 caractères minimum)";
-        if (userData.password !== userData.password_confirmation) newErrors.password_confirmation = "Les mots de passe ne correspondent pas";
+        if (!userData.phoneNumber) newErrors.telephone = "Le téléphone est requis";
+        if (!userData.plainPassword || userData.plainPassword.length < 6) newErrors.plainPassword = "Mot de passe trop court (6 caractères minimum)";
+        if (userData.plainPassword !== userData.password_confirmation) newErrors.password_confirmation = "Les mots de passe ne correspondent pas";
 
         setErrors(newErrors);
 
@@ -32,11 +32,11 @@ function StepUserInfo({handleUserData, nextStep, previousStep, userData}){
 
     return(
         <div className="row">
-            {userData.userType === "Agriculteur" && (
+            {userData.typeUser === "Agriculteur" && (
                 <div className="col-md-6">
                     <div className="form-group">
                         <label htmlFor="picture">Photo de profil</label>
-                        <input type="file" className="form-control" id="picture" name="picture" onChange={(e) => handleUserData({picture: e.target.files[0]})}/>
+                        <input type="file" className="form-control" id="picture" name="picture" onChange={(e) => handleUserData({pictureProfil: e.target.files[0]})}/>
                         {errors.picture && <p style={{color: 'red'}}>{errors.picture}</p>}
                     </div>
                 </div>
@@ -44,14 +44,14 @@ function StepUserInfo({handleUserData, nextStep, previousStep, userData}){
             <div className="col-md-6">
                 <div className="form-group">
                     <label htmlFor="nom">Nom</label>
-                    <input type="text" className="form-control" id="nom" name="nom" onChange={(e) => handleUserData({nom: e.target.value})}/>
+                    <input type="text" className="form-control" id="nom" name="nom" onChange={(e) => handleUserData({lastname: e.target.value})}/>
                     {errors.nom && <p style={{color: 'red'}}>{errors.nom}</p>}
                 </div>
             </div>
             <div className="col-md-6">
                 <div className="form-group">
                     <label htmlFor="prenom">Prénom</label>
-                    <input type="text" className="form-control" id="prenom" name="prenom" onChange={(e) => handleUserData({prenom: e.target.value})}/>
+                    <input type="text" className="form-control" id="prenom" name="prenom" onChange={(e) => handleUserData({firstname: e.target.value})}/>
                     {errors.prenom && <p style={{color: 'red'}}>{errors.prenom}</p>}
                 </div>
             </div>
@@ -65,15 +65,15 @@ function StepUserInfo({handleUserData, nextStep, previousStep, userData}){
             <div className="col-md-6">
                 <div className="form-group">
                     <label htmlFor="telephone">Téléphone</label>
-                    <input type="text" className="form-control" id="telephone" name="telephone" onChange={(e) => handleUserData({telephone: e.target.value})}/>
+                    <input type="text" className="form-control" id="telephone" name="telephone" onChange={(e) => handleUserData({phoneNumber: e.target.value})}/>
                     {errors.telephone && <p style={{color: 'red'}}>{errors.telephone}</p>}
                 </div>
             </div>
             <div className="col-md-6">
                 <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>
-                    <input type="password" className="form-control" id="password" name="password" onChange={(e) => handleUserData({password: e.target.value})}/>
-                    {errors.password && <p style={{color: 'red'}}>{errors.password}</p>}
+                    <input type="password" className="form-control" id="password" name="password" onChange={(e) => handleUserData({plainPassword: e.target.value})}/>
+                    {errors.password && <p style={{color: 'red'}}>{errors.plainPassword}</p>}
                 </div>
             </div>
             <div className="col-md-6">

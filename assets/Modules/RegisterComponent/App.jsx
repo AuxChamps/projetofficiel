@@ -5,6 +5,7 @@ import NavigationBreadCrumb from "./components/NavigationBreadCrumb.jsx";
 import StepUserInfo from "./components/SameInfos/StepUserInfo.jsx";
 import StepAgriculteurInfo from "./components/Agriculteurs/StepAgriculteurInfo.jsx";
 import StepClientInfo from "./components/Client/StepClientInfo.jsx";
+import {CreateUser} from "../../Api/User.js";
 
 function Register({}) {
     const [step, setStep] = useState(1);
@@ -17,6 +18,13 @@ function Register({}) {
         setUserData({ ...userData, ...newData });
     };
 
+    const handleSubmitForm = () => {
+        CreateUser(userData).then(r => {
+            console.log(r);
+        }
+        )
+    }
+
     const renderStep = () => {
         switch (step) {
             case 1:
@@ -24,8 +32,8 @@ function Register({}) {
             case 2:
                 return <StepUserInfo handleUserData={handleUserData} nextStep={nextStep} previousStep={previousStep} userData={userData} />;
             case 3:
-                if (userData.userType === "Agriculteur") {
-                    return <StepAgriculteurInfo handleUserData={handleUserData} nextStep={nextStep} previousStep={previousStep} />;
+                if (userData.typeUser === "Agriculteur") {
+                    return <StepAgriculteurInfo handleUserData={handleUserData} nextStep={handleSubmitForm} previousStep={previousStep}  />;
                 } else {
                     return <StepClientInfo handleUserData={handleUserData} nextStep={nextStep} previousStep={previousStep} />;
                 }
