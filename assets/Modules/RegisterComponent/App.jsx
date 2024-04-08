@@ -6,8 +6,11 @@ import StepUserInfo from "./components/SameInfos/StepUserInfo.jsx";
 import StepAgriculteurInfo from "./components/Agriculteurs/StepAgriculteurInfo.jsx";
 import StepClientInfo from "./components/Client/StepClientInfo.jsx";
 import {CreateUser} from "../../Api/User.js";
+import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 function Register({}) {
+    let navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [userData, setUserData] = useState({}); // je stocke les données de l'utilisateur
 
@@ -20,7 +23,10 @@ function Register({}) {
 
     const handleSubmitForm = () => {
         CreateUser(userData).then(r => {
-            console.log(r);
+                navigate("/connexion");
+                toast("Votre compte a bien été créé, vous pouvez maintenant vous connecter !", {
+                    type: "success",
+                })
         }
         )
     }

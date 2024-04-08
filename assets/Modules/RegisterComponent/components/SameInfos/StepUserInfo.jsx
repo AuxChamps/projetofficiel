@@ -33,7 +33,7 @@ function StepUserInfo({handleUserData, nextStep, previousStep, userData}){
     return(
         <div className="row">
             {userData.typeUser === "Agriculteur" && (
-                <div className="col-md-6">
+                <div className="col-md-6 col-12">
                     <div className="form-group">
                         <label htmlFor="picture">Photo de profil</label>
                         <input type="file" className="form-control" id="picture" name="picture" onChange={(e) => handleUserData({pictureProfil: e.target.files[0]})}/>
@@ -41,7 +41,7 @@ function StepUserInfo({handleUserData, nextStep, previousStep, userData}){
                     </div>
                 </div>
             )}
-            <div className="col-md-6">
+            <div className="col-md-6 col-12">
                 <div className="form-group">
                     <label htmlFor="nom">Nom</label>
                     <input type="text" className="form-control" id="nom" name="nom" onChange={(e) => handleUserData({lastname: e.target.value})}/>

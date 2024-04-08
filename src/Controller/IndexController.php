@@ -15,4 +15,12 @@ class IndexController extends AbstractController
         return $this->render('index.html.twig', [
         ]);
     }
+
+    #[Route('/mon-compte/{page}', name: 'mon-compte')]
+    public function account($page = ''): Response
+    {
+
+        return $this->render('index.html.twig', [
+        ]);
+    }
 }

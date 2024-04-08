@@ -18,3 +18,13 @@ body {
     border-radius: 20px;
     border: none;
 }
+
+label {
+    color: #545454!important;
+    font-weight: 400;
+}
+
+#home {
+    background: #EDEDED;
+    height: 100vh;
+}
